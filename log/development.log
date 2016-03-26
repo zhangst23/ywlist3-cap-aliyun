@@ -10035,3 +10035,99 @@ Started GET "/assets/lists.self-2ddc43b1230f4b08d4e2732daf2c61ad05d42fa61ed62a41
 
 
 Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-03-24 02:41:25 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_taggings_on_taggable_id_and_taggable_type_and_context' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_taggings_on_taggable_id_and_taggable_type_and_context' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='taggings_idx' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='taggings_idx' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tags_on_name' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tags_on_name' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_views_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_views_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_views_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_views_on_email' AND type='index'
+[0m
+
+
+Started GET "/" for ::1 at 2016-03-27 03:09:28 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ListsController#index as HTML
+  [1m[35mList Load (0.7ms)[0m  SELECT  "lists".* FROM "lists"  ORDER BY "lists"."created_at" DESC LIMIT 9 OFFSET 0
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "lists"[0m
+  [1m[35m (1.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN lists ON lists.id = taggings.taggable_id WHERE (taggings.taggable_type = 'List' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT lists.id FROM "lists")) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 20) subquery_for_count
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1mSELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN lists ON lists.id = taggings.taggable_id WHERE (taggings.taggable_type = 'List' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT lists.id FROM "lists")) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id  ORDER BY count desc LIMIT 20[0m
+  Rendered lists/index.html.erb within layouts/application (47.3ms)
+Completed 200 OK in 661ms (Views: 601.1ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/assets/lists.self-a3dfb176f5bdbf19549cea4c03a4adf03c701d113f8a8391c981b89167e13258.css?body=1" for ::1 at 2016-03-27 03:09:29 +0800
+
+
+Started GET "/assets/scaffolds.self-80983bf960f652121cb6f8c5da7ffe676c6034b40935bb8e460ed2bb03444af1.css?body=1" for ::1 at 2016-03-27 03:09:29 +0800
+
+
+Started GET "/assets/application.self-3b76923959ca9d8b6469acaf1af8b4697cc9c2421803f960362a526e5460d755.css?body=1" for ::1 at 2016-03-27 03:09:29 +0800
+
+
+Started GET "/assets/bootstrap.self-d0e973a52d36a01036265aeefaf2d1ae3499d2cb231a9be3bd846432daf231de.js?body=1" for ::1 at 2016-03-27 03:09:29 +0800
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-03-27 03:09:29 +0800
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-03-27 03:09:29 +0800
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-03-27 03:09:29 +0800
+
+
+Started GET "/assets/lists.self-2ddc43b1230f4b08d4e2732daf2c61ad05d42fa61ed62a41a0d7257d2f9db4f3.js?body=1" for ::1 at 2016-03-27 03:09:29 +0800
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-03-27 03:09:29 +0800

@@ -1,13 +1,12 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
-
+set :application, 'ywlist_cap'
+set :repo_url, 'git@github.com:zhangst23/ywlist3-cap-aliyun.git'
+set :branch, "cap"
 set :deploy_user, 'deployer'
 
 set :scm, :git
-set :repo_url, 'git@github.org:lanvige/railsapp.git'
 
 # rbenv
 set :rbenv_type, :user
