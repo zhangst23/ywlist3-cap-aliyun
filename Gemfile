@@ -38,7 +38,7 @@ gem 'kaminari'
 
 gem 'rails_admin'
 
-
+gem 'unicorn', '~> 4.9.0'
 
 
 # Use ActiveModel has_secure_password
@@ -65,7 +65,8 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  
+  gem 'capistrano3-unicorn', '~> 0.2.1'
+  gem 'capistrano-sidekiq', '~> 0.5.4'
 end
 
 

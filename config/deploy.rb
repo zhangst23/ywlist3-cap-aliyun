@@ -23,6 +23,27 @@ set :linked_files, %w{config/database.yml config/application.yml config/secrets.
 # dirs we want symlinking to shared
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
+set :unicorn_config_path, -> { File.join(current_path, "config", "unicorn.rb") }
+
+set :rbenv_map_bins, %w{rake gem bundle ruby rails sidekiq sidekiqctl}
+
+
+
+
+after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
-  after :finishing, 'deploy:cleanup'
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
+  end
+
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+
 end
